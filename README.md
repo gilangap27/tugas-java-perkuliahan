@@ -1,3 +1,7 @@
 # Kumpulan Program Java Sederhana
 
-Kumpulan program java dari saya mulai belajar java sampai sekarang
+Repo ini berisi program java sederhana, hasil saya belajar java dari perkuliahan saya dari berbagai mata kuliah
+
+## Teknologi yang digunakan
+
+Java
