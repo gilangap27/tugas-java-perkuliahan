@@ -76,8 +76,7 @@ public class penyewaanKamera_UTSRevisi {
                                         Arrays.asList("K003", "Canon 40D IR", "250000"),
                                         Arrays.asList("K004", "Nikon D850", "400000"),
                                         Arrays.asList("K005", "Nikon D600", "350000"),
-                                        Arrays.asList("K006", "Nikon D90", "100000")
-                                );
+                                        Arrays.asList("K006", "Nikon D90", "100000"));
 
                                 System.out.println("+------+----------------------+--------------+");
                                 System.out.println("| Kode | Nama Kamera          | Harga        |");
@@ -88,8 +87,7 @@ public class penyewaanKamera_UTSRevisi {
                                             "| %-4s | %-20s | %-12s |%n",
                                             data.get(0),
                                             data.get(1),
-                                            formatRupiah(Float.parseFloat(data.get(2)))
-                                    );
+                                            formatRupiah(Float.parseFloat(data.get(2))));
                                 }
 
                                 System.out.println("+------+----------------------+--------------+");
@@ -294,7 +292,7 @@ public class penyewaanKamera_UTSRevisi {
 
                                         try {
                                             lamaSewa = Integer.parseInt(br.readLine());
-                                           
+
                                             if (lamaSewa > 0) {
                                                 break;
                                             } else {
@@ -318,26 +316,28 @@ public class penyewaanKamera_UTSRevisi {
                                             System.out.println();
                                         }
                                     }
-                                    
-                                     totalAwal = jumlahKamera*lamaSewa*Integer.parseInt(hargaKamera);
-                                            if(lamaSewa >= 3 && lamaSewa < 7){
-                                                    diskon = totalAwal*0.1;
-                                                    total = totalAwal - diskon;
-                                                } if(lamaSewa >= 7){
-                                                    diskon = totalAwal*0.3;
-                                                    total = totalAwal - diskon;
-                                                } if(lamaSewa < 3) {
-                                                    diskon = 0;
-                                                    total = totalAwal - diskon;
-                                                }
-                                            
-                                     while (true) {
+
+                                    totalAwal = jumlahKamera * lamaSewa * Integer.parseInt(hargaKamera);
+                                    if (lamaSewa >= 3 && lamaSewa < 7) {
+                                        diskon = totalAwal * 0.1;
+                                        total = totalAwal - diskon;
+                                    }
+                                    if (lamaSewa >= 7) {
+                                        diskon = totalAwal * 0.3;
+                                        total = totalAwal - diskon;
+                                    }
+                                    if (lamaSewa < 3) {
+                                        diskon = 0;
+                                        total = totalAwal - diskon;
+                                    }
+
+                                    while (true) {
                                         System.out.print("Uang yang dibayar: ");
 
                                         try {
                                             bayar = Float.parseFloat(br.readLine());
-                                            
-                                            if(bayar >= total){
+
+                                            if (bayar >= total) {
                                                 kembalian = bayar - total;
                                             } else if (bayar < total) {
                                                 kembalian = 0;
@@ -360,7 +360,7 @@ public class penyewaanKamera_UTSRevisi {
                                             System.out.println();
                                         }
                                     }
-                                    
+
                                     dataPenyewa.add("P" + String.format("%03d", penyewaKe));
                                     dataPenyewa.add(nama);
                                     dataPenyewa.add(alamat);
@@ -428,8 +428,7 @@ public class penyewaanKamera_UTSRevisi {
                                     data.get(0),
                                     data.get(1),
                                     data.get(2),
-                                    data.get(3)
-                            );
+                                    data.get(3));
                         }
 
                         System.out.println("+------+---------+------------+---------+");
@@ -448,19 +447,21 @@ public class penyewaanKamera_UTSRevisi {
                                     data.get(0),
                                     data.get(5),
                                     data.get(4),
-                                    data.get(6)
-                            );
+                                    data.get(6));
                         }
 
                         System.out.println("+------+----------------------+--------------+--------+");
-                        
+
                         System.out.println();
 
                         System.out.println("Transaksi");
 
-                        System.out.println("+----------------+--------------+-------------+-------------------+--------+------------------+-----------------+------------+-----------+-------------+---------------+");
-                        System.out.println("| Kode Transaksi | Kode Pembeli | Kode Kamera | Harga Sewa (hari) | Jumlah | Lama Sewa (hari) | Total Awal Sewa |   Diskon   |   Total   |    Bayar    |   Kembalian   |");
-                        System.out.println("+----------------+--------------+-------------+-------------------+--------+------------------+-----------------+------------+-----------+-------------+---------------+");
+                        System.out.println(
+                                "+----------------+--------------+-------------+-------------------+--------+------------------+-----------------+------------+-----------+-------------+---------------+");
+                        System.out.println(
+                                "| Kode Transaksi | Kode Pembeli | Kode Kamera | Harga Sewa (hari) | Jumlah | Lama Sewa (hari) | Total Awal Sewa |   Diskon   |   Total   |    Bayar    |   Kembalian   |");
+                        System.out.println(
+                                "+----------------+--------------+-------------+-------------------+--------+------------------+-----------------+------------+-----------+-------------+---------------+");
 
                         for (List<String> data : penyewa) {
                             System.out.printf(
@@ -475,16 +476,16 @@ public class penyewaanKamera_UTSRevisi {
                                     data.get(11),
                                     data.get(12),
                                     data.get(14),
-                                    data.get(15)
-                            );
+                                    data.get(15));
                         }
 
-                        System.out.println("+----------------+--------------+-------------+-------------------+--------+------------------+-----------------+------------+-----------+-------------+---------------+");
-                        
+                        System.out.println(
+                                "+----------------+--------------+-------------+-------------------+--------+------------------+-----------------+------------+-----------+-------------+---------------+");
+
                     } else {
                         System.out.println("Tidak ada data yang bisa ditampilkan.");
                     }
-                    
+
                     System.out.println();
                 } else if (menu == 3) {
                     break;

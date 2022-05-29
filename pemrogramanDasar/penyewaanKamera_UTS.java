@@ -385,8 +385,7 @@ public class penyewaanKamera_UTS {
                                 "| %-11s | %-17s | %-12s |%n",
                                 data.get(0),
                                 data.get(1),
-                                formatRupiah(Float.parseFloat(data.get(2)))
-                        );
+                                formatRupiah(Float.parseFloat(data.get(2))));
                     }
 
                     System.out.println("+-------------+-------------------+--------------+");
@@ -579,9 +578,12 @@ public class penyewaanKamera_UTS {
 
                     System.out.println();
 
-                    System.out.println("+---------------+------------+-------+----------+----------+-------------+---------------+-----------+--------------+--------+-------------------+");
-                    System.out.println("| No. Transaksi | Tanggal    | Nama  | Alamat   | No. Telp | Kode Barang | Jumlah Kamera | Lama Sewa | Harga Sewa   | Diskon | Total             |");
-                    System.out.println("+---------------+------------+-------+----------+----------+-------------+---------------+-----------+--------------+--------+-------------------+");
+                    System.out.println(
+                            "+---------------+------------+-------+----------+----------+-------------+---------------+-----------+--------------+--------+-------------------+");
+                    System.out.println(
+                            "| No. Transaksi | Tanggal    | Nama  | Alamat   | No. Telp | Kode Barang | Jumlah Kamera | Lama Sewa | Harga Sewa   | Diskon | Total             |");
+                    System.out.println(
+                            "+---------------+------------+-------+----------+----------+-------------+---------------+-----------+--------------+--------+-------------------+");
 
                     for (List<String> data : transaksi) {
                         System.out.printf(
@@ -596,11 +598,11 @@ public class penyewaanKamera_UTS {
                                 data.get(8),
                                 formatRupiah(Float.parseFloat(data.get(6))),
                                 data.get(9),
-                                formatRupiah(Float.parseFloat(data.get(10)))
-                        );
+                                formatRupiah(Float.parseFloat(data.get(10))));
                     }
 
-                    System.out.println("+---------------+------------+-------+----------+----------+-------------+---------------+-----------+--------------+--------+-------------------+");
+                    System.out.println(
+                            "+---------------+------------+-------+----------+----------+-------------+---------------+-----------+--------------+--------+-------------------+");
                 } else {
                     System.out.println("Harap masukan master barang\ndan/atau master penyewa.");
                 }
@@ -654,7 +656,8 @@ public class penyewaanKamera_UTS {
 
                                 if (uangBayar >= Float.parseFloat(transaksi.get(pembayaranKe - 1).get(10))) {
                                     dataPembayaran.add("Lunas");
-                                    dataPembayaran.add(String.valueOf(uangBayar - Float.parseFloat(transaksi.get(pembayaranKe - 1).get(10))));
+                                    dataPembayaran.add(String.valueOf(
+                                            uangBayar - Float.parseFloat(transaksi.get(pembayaranKe - 1).get(10))));
                                 } else {
                                     dataPembayaran.add("Belum Lunas");
                                     dataPembayaran.add("0");
@@ -680,9 +683,12 @@ public class penyewaanKamera_UTS {
 
                     System.out.println();
 
-                    System.out.println("+----------------+---------------+------------+-------------------+-------------------+-------------+-------------------+");
-                    System.out.println("| No. Pembayaran | No. Transaksi | Tanggal    | Total             | Uang Bayar        | Status      | Kembalian         |");
-                    System.out.println("+----------------+---------------+------------+-------------------+-------------------+-------------+-------------------+");
+                    System.out.println(
+                            "+----------------+---------------+------------+-------------------+-------------------+-------------+-------------------+");
+                    System.out.println(
+                            "| No. Pembayaran | No. Transaksi | Tanggal    | Total             | Uang Bayar        | Status      | Kembalian         |");
+                    System.out.println(
+                            "+----------------+---------------+------------+-------------------+-------------------+-------------+-------------------+");
 
                     for (List<String> data : pembayaran) {
                         System.out.printf(
@@ -693,11 +699,11 @@ public class penyewaanKamera_UTS {
                                 formatRupiah(Float.parseFloat(data.get(3))),
                                 formatRupiah(Float.parseFloat(data.get(4))),
                                 data.get(5),
-                                formatRupiah(Float.parseFloat(data.get(6)))
-                        );
+                                formatRupiah(Float.parseFloat(data.get(6))));
                     }
 
-                    System.out.println("+----------------+---------------+------------+-------------------+-------------------+-------------+-------------------+");
+                    System.out.println(
+                            "+----------------+---------------+------------+-------------------+-------------------+-------------+-------------------+");
 
                 } else {
                     System.out.println("Cetak transaksi sewa masih kosong.");

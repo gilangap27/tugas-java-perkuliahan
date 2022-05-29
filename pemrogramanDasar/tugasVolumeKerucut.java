@@ -10,7 +10,7 @@ public class tugasVolumeKerucut {
         boolean perbandingan;
         String nama;
         char inisial;
-        
+
         System.out.println("===VOLUME===");
         System.out.print("Inputkan nama Anda : ");
         nama = br.nextLine();
@@ -20,18 +20,18 @@ public class tugasVolumeKerucut {
         rusuk = br.nextDouble();
         System.out.print("Inputkan tinggi bangun ruang : ");
         tinggi = br.nextDouble();
-        
+
         System.out.println("");
         System.out.println("===HASIL===");
         System.out.println("Nama anda " + nama + " dengan inisial huruf " + inisial);
-        volumeKerucut = 0.333*3.14*rusuk*rusuk*tinggi;
+        volumeKerucut = 0.333 * 3.14 * rusuk * rusuk * tinggi;
         System.out.println("Volume Kerucut : " + volumeKerucut);
         perbandingan = rusuk > tinggi;
         System.out.println("Rusuk lebih besar dari tinggi ? " + perbandingan);
-        volumeTabung = 3.14*rusuk*rusuk*tinggi;
+        volumeTabung = 3.14 * rusuk * rusuk * tinggi;
         System.out.println("Volume Tabung : " + volumeTabung);
         perbandingan = rusuk != tinggi;
         System.out.println("Rusuk tidak sama dengan tinggi ? " + perbandingan);
-        
+
     }
 }

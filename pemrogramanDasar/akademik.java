@@ -1,5 +1,4 @@
 
-
 package pemrogramanDasar;
 
 import java.io.BufferedReader;
@@ -11,24 +10,24 @@ import java.util.Stack;
 import java.util.Vector;
 
 public class akademik {
-    
-//    GLOBAL VARIABLE
-    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    
-//    VECTOR
-    public static Vector dataNim = new Vector();
-    public static Vector dataNama = new Vector();
-    public static Vector dataJur = new Vector();
 
-//    QUEUE
+    // GLOBAL VARIABLE
+    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    // VECTOR
+    public static Vector<Integer> dataNim = new Vector<Integer>();
+    public static Vector<String> dataNama = new Vector<String>();
+    public static Vector<String> dataJur = new Vector<String>();
+
+    // QUEUE
     public static Queue<Integer> kehadiran = new LinkedList<>();
 
-//    STACK
+    // STACK
     public static Stack<Integer> kodeBuku = new Stack<Integer>();
     public static Stack<String> judulBuku = new Stack<String>();
     public static Stack<Integer> tahunTerbit = new Stack<Integer>();
 
-//    ARRAY 2D
+    // ARRAY 2D
     public static String[][] dataMk = new String[3][100];
     public static int[][] nilaiTugas = new int[100][100];
     public static int[][] nilaiUTS = new int[100][100];
@@ -40,12 +39,12 @@ public class akademik {
     public static double totalA = 0;
     public static int[] jumlahMk = new int[100];
     public static boolean keluar = false;
-    
-//    PROGRAM UTAMA
-    public static void main(String[] args) throws IOException{
-        while(true){
+
+    // PROGRAM UTAMA
+    public static void main(String[] args) throws IOException {
+        while (true) {
             menuUtama();
-            
+
             switch (pilih) {
                 case 1:
                     case1();
@@ -63,16 +62,16 @@ public class akademik {
                     System.out.println("Program selesai!");
                     System.exit(0);
                     break;
-                default: 
+                default:
                     System.out.println("");
                     System.out.println("Inputan anda salah!");
-                    System.out.println(""); 
-            }  
+                    System.out.println("");
+            }
         }
     }
-    
-//    MENU UTAMA
-    public static void menuUtama() throws IOException{
+
+    // MENU UTAMA
+    public static void menuUtama() throws IOException {
         System.out.println("");
         System.out.println("=====PENGELOLAAN MAHASISWA=====");
         System.out.println("");
@@ -86,46 +85,46 @@ public class akademik {
         pilih = Integer.parseInt(br.readLine());
         System.out.println("");
     }
-    
-    private static double nilaiAkhir(int tugas, int uts, int uas){
-       double nilaiAkhir = (0.3*uts)+(0.4*tugas)+(0.3*uas);
-       return nilaiAkhir;
+
+    private static double nilaiAkhir(int tugas, int uts, int uas) {
+        double nilaiAkhir = (0.3 * uts) + (0.4 * tugas) + (0.3 * uas);
+        return nilaiAkhir;
     }
-    private static char perhitunganGrade(double nilaiAkhir){
-        char grade = 0;
-        if(nilaiAkhir < 40){
+
+    private static char perhitunganGrade(double nilaiAkhir) {
+        if (nilaiAkhir < 40) {
             return 'E';
-        } else if (nilaiAkhir >= 40 && nilaiAkhir < 55){
+        } else if (nilaiAkhir >= 40 && nilaiAkhir < 55) {
             return 'D';
-        } else if (nilaiAkhir >= 55 && nilaiAkhir < 65){
+        } else if (nilaiAkhir >= 55 && nilaiAkhir < 65) {
             return 'C';
-        } else if (nilaiAkhir >= 65 && nilaiAkhir < 80){
+        } else if (nilaiAkhir >= 65 && nilaiAkhir < 80) {
             return 'B';
-        } else if (nilaiAkhir >= 80){
+        } else if (nilaiAkhir >= 80) {
             return 'A';
         }
         return 0;
     }
-    
-//    REKURSIF
-    public static double totalAkhir(double arr[][], int i, int j){
-        if(i == 0 && j == 0){
+
+    // REKURSIF
+    public static double totalAkhir(double arr[][], int i, int j) {
+        if (i == 0 && j == 0) {
             return arr[i][j];
-        } else if(j == 0){
-            return totalAkhir(arr, i-1, arr.length-1)+arr[i][j];
+        } else if (j == 0) {
+            return totalAkhir(arr, i - 1, arr.length - 1) + arr[i][j];
         } else {
-            return totalAkhir(arr, i, j-1)+arr[i][j];
+            return totalAkhir(arr, i, j - 1) + arr[i][j];
         }
     }
-    
-//    CASE 1
-    public static void case1() throws IOException{
+
+    // CASE 1
+    public static void case1() throws IOException {
         System.out.print("Masukkan Jumlah Mahasiswa : ");
         jumlahMhs = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < jumlahMhs; i++) {
             System.out.println("");
-            System.out.println(">>> Data ke-" +(i+1));
+            System.out.println(">>> Data ke-" + (i + 1));
             System.out.print("Masukkan NIM : ");
             int nim = Integer.parseInt(br.readLine());
             System.out.print("Masukkan Nama : ");
@@ -142,7 +141,7 @@ public class akademik {
             jumlahMk[i] = Integer.parseInt(br.readLine());
             for (int j = 0; j < jumlahMk[i]; j++) {
                 System.out.println("");
-                System.out.println("Matakuliah ke-" +(j+1));
+                System.out.println("Matakuliah ke-" + (j + 1));
                 System.out.print("Masukkan Kode MK : ");
                 dataMk[i][0] = br.readLine();
                 System.out.print("Masukkan Nama MK : ");
@@ -156,52 +155,52 @@ public class akademik {
                 nilaiUTS[i][j] = Integer.parseInt(br.readLine());
                 System.out.print("Masukkan Nilai UAS : ");
                 nilaiUAS[i][j] = Integer.parseInt(br.readLine());
-                
-//                METHOD MATH ROUND
-                nilaiAkhir[i][j] = Math.round(nilaiAkhir(nilaiTugas[i][j],nilaiUTS[i][j],nilaiUAS[i][j]));
+
+                // METHOD MATH ROUND
+                nilaiAkhir[i][j] = Math.round(nilaiAkhir(nilaiTugas[i][j], nilaiUTS[i][j], nilaiUAS[i][j]));
                 totalA = Math.round(totalAkhir(nilaiAkhir, i, j));
-                
+
                 grade[i][j] = perhitunganGrade(nilaiAkhir[i][j]);
             }
-        }  
+        }
     }
-    
-//    CASE 2
-    public static void case2(){
+
+    // CASE 2
+    public static void case2() {
         System.out.println("====OUPUT DATA====");
         for (int i = 0; i < jumlahMhs; i++) {
             System.out.println("");
-            System.out.println(">>> Data ke-" +(i+1));
-            System.out.println("NIM     : " +dataNim.get(i));
-            System.out.println("Nama    : " +dataNama.get(i));
-            System.out.println("Jurusan : " +dataJur.get(i));
+            System.out.println(">>> Data ke-" + (i + 1));
+            System.out.println("NIM     : " + dataNim.get(i));
+            System.out.println("Nama    : " + dataNama.get(i));
+            System.out.println("Jurusan : " + dataJur.get(i));
 
             for (int j = 0; j < jumlahMk[i]; j++) {
                 System.out.println("");
-                System.out.println("Matakuliah ke-" +(j+1));
-                System.out.println("Kode MK : " +dataMk[i][0]);
-                System.out.println("Nama MK : " +dataMk[i][1]);
-                System.out.println("SKS     : " +dataMk[i][2]);
+                System.out.println("Matakuliah ke-" + (j + 1));
+                System.out.println("Kode MK : " + dataMk[i][0]);
+                System.out.println("Nama MK : " + dataMk[i][1]);
+                System.out.println("SKS     : " + dataMk[i][2]);
 
-                System.out.println("Nilai Tugas : " +nilaiTugas[i][j]);
-                System.out.println("Nilai UTS   : " +nilaiUTS[i][j]);
-                System.out.println("Nilai UAS   : " +nilaiUAS[i][j]);
-                System.out.println("Nilai Akhir : " +nilaiAkhir[i][j]);
-                System.out.println("Grade       : " +grade[i][j]);
+                System.out.println("Nilai Tugas : " + nilaiTugas[i][j]);
+                System.out.println("Nilai UTS   : " + nilaiUTS[i][j]);
+                System.out.println("Nilai UAS   : " + nilaiUAS[i][j]);
+                System.out.println("Nilai Akhir : " + nilaiAkhir[i][j]);
+                System.out.println("Grade       : " + grade[i][j]);
             }
         }
         System.out.println("");
-        System.out.println("Total Nilai Akhir Seluruh Mahasiswa : " +totalA);
+        System.out.println("Total Nilai Akhir Seluruh Mahasiswa : " + totalA);
         System.out.println("");
     }
-    
-//    CASE 3
-    public static void case3() throws IOException{
-        while(true){
+
+    // CASE 3
+    public static void case3() throws IOException {
+        while (true) {
             System.out.println("=====DAFTAR HADIR=====");
             System.out.println("Siswa yang hadir : ");
             for (int i = 0; i < kehadiran.size(); i++) {
-                System.out.println((i+1)+ ". "+kehadiran.peek());
+                System.out.println((i + 1) + ". " + kehadiran.peek());
                 kehadiran.add(kehadiran.poll());
             }
             System.out.println("");
@@ -226,33 +225,33 @@ public class akademik {
                     }
                     break;
                 case 2:
-                    if(kehadiran.isEmpty()){
+                    if (kehadiran.isEmpty()) {
                         System.out.println("Daftar sedang kosong!");
                         System.out.println("");
                     } else {
-                        System.out.println("Siswa dengan NIM " +kehadiran.peek() +" telah dihapus");
+                        System.out.println("Siswa dengan NIM " + kehadiran.peek() + " telah dihapus");
                         kehadiran.remove();
                     }
                     break;
                 case 3:
                     keluar = true;
                     break;
-                default: 
+                default:
                     System.out.println("");
                     System.out.println("Inputan anda salah!");
-                    System.out.println(""); 
-            }  
-            if(keluar == true){
+                    System.out.println("");
+            }
+            if (keluar == true) {
                 keluar = false;
                 break;
             }
         }
     }
-    
-    //    CASE 4
-    public static void case4() throws IOException{
+
+    // CASE 4
+    public static void case4() throws IOException {
         int kapasitas = 0;
-        while(true){
+        while (true) {
             System.out.println("=====DATA PERPUSTAKAAN=====");
             System.out.println("");
             System.out.println("1. Input Buku");
@@ -287,7 +286,7 @@ public class akademik {
                     break;
                 case 2:
                     System.out.println("");
-                    System.out.println("Kode Buku " + kodeBuku.peek() +" telah dihapus");
+                    System.out.println("Kode Buku " + kodeBuku.peek() + " telah dihapus");
                     kodeBuku.pop();
                     judulBuku.pop();
                     tahunTerbit.pop();
@@ -299,29 +298,29 @@ public class akademik {
                         String judul = judulBuku.peek();
                         int tahunT = tahunTerbit.peek();
 
-                        System.out.println("Kode Buku : " +kode);
+                        System.out.println("Kode Buku : " + kode);
                         kodeBuku.pop();
-                        System.out.println("Judul Buku : " +judul);
+                        System.out.println("Judul Buku : " + judul);
                         judulBuku.pop();
-                        System.out.println("Tahun Terbit : " +tahunT);
+                        System.out.println("Tahun Terbit : " + tahunT);
                         tahunTerbit.pop();
                     }
                     break;
                 case 4:
                     keluar = true;
                     break;
-                default: 
+                default:
                     System.out.println("");
                     System.out.println("Inputan anda salah!");
-                    System.out.println(""); 
+                    System.out.println("");
                     break;
             }
-            if(keluar == true){
+            if (keluar == true) {
                 keluar = false;
                 break;
             }
         }
-                    
+
     }
-    
+
 }
